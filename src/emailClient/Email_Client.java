@@ -139,8 +139,6 @@ public class Email_Client {
                                         + bdayMailRecipient.getAgeOn(date));
                             }
                         }
-                    } else {
-                        System.out.println("Invalid date!");
                     }
 
                     break;
@@ -148,9 +146,13 @@ public class Email_Client {
                 case 4: {
                     // input format - yyyy/MM/dd (ex: 2018/09/17)
                     // code to print the details of all the emails sent on the input date
+                    System.out.println("Input date to list emails");
+                    System.out.println("Format :- yyyy/MM/dd (ex: 2018/09/17)");
                     String input = scanner.nextLine();
                     LocalDate date = InputHandler.dateValidityCheck(input, formatter);
-                    emailSender.printSentEmailDetails(date);
+                    if (date != null) {
+                        emailSender.printSentEmailDetails(date);
+                    }
                     break;
                 }
                 case 5: {
@@ -172,6 +174,8 @@ public class Email_Client {
                     System.out.println(menu);
 
             }
+            System.out.println("==============================================================");
+            System.out.println("Select an Option");
         }
         scanner.close();
 
