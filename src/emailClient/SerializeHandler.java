@@ -1,6 +1,7 @@
 package emailClient;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -51,6 +52,8 @@ public class SerializeHandler {
 
             mediator.setEmailsByDate(emailsByDate);
 
+        } catch (FileNotFoundException e) {
+            return;
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
