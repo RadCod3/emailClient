@@ -1,0 +1,5 @@
+office:nimal,nimal@gmail.com,ceo
+office:chamara,chamara@gmail.com,dgm
+office_friend:kasun,kasun@gmail.com,chairman,2000/01/22
+office:nibba,nibba@gmail.com,clerk
+personal:inuka,inuka,inuka@yahoo.com,2000/10/10
