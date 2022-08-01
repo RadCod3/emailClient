@@ -15,7 +15,7 @@ public class FileHandler {
     }
 
     public void readRecipientsFile() {
-        File recipientFile = new File("data/recipient_v2.txt");
+        File recipientFile = new File("data/recipient.txt");
         if (recipientFile.exists()) {
             try {
                 Scanner fileReader = new Scanner(recipientFile);
