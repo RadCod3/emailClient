@@ -1,8 +1,0 @@
-personal:inuka,inuka,inuka@yahoo.com,2000/10/10
-office_friend:kasun,kasun@gmail.com,chairman,2000/01/22
-official:chamara,chamara@gmail.com,dgm
-personal:chamath,cham,chamath@yahoo.com,2022/07/18
-personal:pankaja,panka,panka@yahoo.com,2022/07/18
-office_friend:radith,radith.20@cse.mrt.ac.lk,student,2022/07/18
-personal:SwordKchain,sword,swordkchain@gmail.com,2022/08/01
-office_friend:mack,mck6qwr3@anonaddy.me,hackerman,2022/07/25
