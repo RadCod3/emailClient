@@ -1,13 +1,14 @@
 package emailClient;
 
 import java.time.LocalDate;
+import java.time.MonthDay;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class BirthdayHandler implements Runnable {
 
-    private HashMap<LocalDate, List<String>> emailAddressesByBirthday = new HashMap<LocalDate, List<String>>();
+    private HashMap<MonthDay, List<String>> emailAddressesByBirthday = new HashMap<MonthDay, List<String>>();
 
     private IMediator mediator;
 
@@ -16,7 +17,6 @@ public class BirthdayHandler implements Runnable {
     }
 
     public void checkForWishableToday() {
-        // FIXME birthday checks the exact date instead of month
         LocalDate today = LocalDate.now();
 
         List<MailRecipient> bdayRecipientList = getWishable(today);
@@ -34,11 +34,11 @@ public class BirthdayHandler implements Runnable {
     }
 
     public List<MailRecipient> getWishable(LocalDate date) {
-
+        MonthDay dateMDay = MonthDay.from(date);
         List<MailRecipient> bdayRecipientList = new ArrayList<MailRecipient>();
 
-        if (emailAddressesByBirthday.containsKey(date)) {
-            List<String> bdayList = emailAddressesByBirthday.get(date);
+        if (emailAddressesByBirthday.containsKey(dateMDay)) {
+            List<String> bdayList = emailAddressesByBirthday.get(dateMDay);
             for (String emailString : bdayList) {
                 bdayRecipientList.add(mediator.getRecipientByEmail(emailString));
             }
@@ -50,12 +50,14 @@ public class BirthdayHandler implements Runnable {
     }
 
     public void addToBdayTable(LocalDate birthday, String emailString) {
-        if (emailAddressesByBirthday.containsKey(birthday)) {
-            emailAddressesByBirthday.get(birthday).add(emailString);
+        MonthDay bdayMonthDay = MonthDay.from(birthday);
+
+        if (emailAddressesByBirthday.containsKey(bdayMonthDay)) {
+            emailAddressesByBirthday.get(bdayMonthDay).add(emailString);
         } else {
             List<String> bdayList = new ArrayList<String>();
             bdayList.add(emailString);
-            emailAddressesByBirthday.put(birthday, bdayList);
+            emailAddressesByBirthday.put(bdayMonthDay, bdayList);
         }
 
     }
