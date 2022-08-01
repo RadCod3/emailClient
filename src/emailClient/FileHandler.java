@@ -32,7 +32,7 @@ public class FileHandler {
 
     public void writeToRecipientFile(String type, String[] arguments) {
         try {
-            File recipientFile = new File("data/recipient_v2.txt");
+            File recipientFile = new File("data/recipient.txt");
             FileWriter Writer = new FileWriter(recipientFile, true);
             if (!recipientFile.exists()) {
                 recipientFile.createNewFile();
