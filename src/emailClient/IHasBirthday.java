@@ -8,4 +8,6 @@ public interface IHasBirthday {
     public String wishForBirthdayContent();
 
     public String wishForBdaySubject();
+
+    public int getAgeOn(LocalDate date);
 }

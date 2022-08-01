@@ -133,7 +133,10 @@ public class Email_Client {
                             System.out.println("People who have their birthdays on " + date + ",");
 
                             for (MailRecipient mailRecipient : bdayRecipientList) {
-                                System.out.println(mailRecipient.getName() + " - " + mailRecipient.getEmail());
+                                IHasBirthday bdayMailRecipient = (IHasBirthday) mailRecipient;
+                                System.out.println(mailRecipient.getName() + " - "
+                                        + mailRecipient.getEmail() + " - "
+                                        + bdayMailRecipient.getAgeOn(date));
                             }
                         }
                     } else {

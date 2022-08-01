@@ -1,6 +1,7 @@
 package emailClient;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 import javax.mail.internet.InternetAddress;
 
@@ -32,6 +33,12 @@ public class OfficialFriendRecipient extends OfficialRecipient implements IHasBi
 
     public static int getCount() {
         return count;
+    }
+
+    @Override
+    public int getAgeOn(LocalDate date) {
+        Period period = Period.between(birthday, date);
+        return period.getYears();
     }
 
 }
