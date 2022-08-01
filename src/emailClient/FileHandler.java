@@ -1,5 +1,6 @@
 package emailClient;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -33,7 +34,8 @@ public class FileHandler {
     public void writeToRecipientFile(String type, String[] arguments) {
         try {
             File recipientFile = new File("data/recipient.txt");
-            FileWriter Writer = new FileWriter(recipientFile, true);
+            FileWriter fileWriter = new FileWriter(recipientFile, true);
+            BufferedWriter Writer = new BufferedWriter(fileWriter);
             if (!recipientFile.exists()) {
                 recipientFile.createNewFile();
             }
