@@ -79,7 +79,8 @@ public class EmailSender {
                 emailList.add(email);
                 emailsByDate.put(LocalDate.now(), emailList);
             }
-
+            // TODO Move serialize Emails to inputhandler or EmailClient that way we can
+            // serialize only after all birthday emails are sent
             mediator.serializeEmails();
 
         } catch (MessagingException e) {
