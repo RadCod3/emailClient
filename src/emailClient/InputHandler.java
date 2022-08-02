@@ -117,10 +117,11 @@ public class InputHandler {
     }
 
     /**
-     * Checks whether a string represents a date based on a formatter
+     * It checks whether the date is valid or not
      * 
-     * @param date
-     * @param formatter
+     * @param date      The date to be checked
+     * @param formatter DateTimeFormatter.ofPattern("dd/MM/yyyy")
+     * @return The method is returning a LocalDate object.
      */
     public static LocalDate dateValidityCheck(String date, DateTimeFormatter formatter) {
         // Checks whether date is valid
@@ -152,9 +153,12 @@ public class InputHandler {
     }
 
     /**
-     * Checks whether a string is a valid InternetAddress
+     * It takes a string, and returns an InternetAddress object if the string is a
+     * valid email address,
+     * or null if it is not
      * 
-     * @param emailString
+     * @param emailString The email address to be validated.
+     * @return The method is returning an InternetAddress object.
      */
     public static InternetAddress parseEmail(String emailString) {
         try {
