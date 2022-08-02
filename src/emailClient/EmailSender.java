@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * It sends emails
+ * The EmailSender class does the sending of emails and is the class that mainly
+ * interacts with {@link javax.mail} api
  */
 public class EmailSender {
 

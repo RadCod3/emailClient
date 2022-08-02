@@ -11,6 +11,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * The SerializeHandler class as the name suggests "Handles" things related to
+ * serializing. This includes Serializing,Deserializing etc.
+ */
 public class SerializeHandler {
     private IMediator mediator;
 

@@ -20,11 +20,13 @@ public class InputHandler {
     }
 
     /**
-     * This function handles input and decides whether to write input into the file
-     * based on the argument "writeToFile"
+     * It takes a string input, checks whether it's a valid input, and if it is, it
+     * creates a recipient
+     * object and optionally, calls a {@link FileHandler} to write it to a file
      * 
-     * @param input
-     * @param writeToFile
+     * @param input       The input string that the user has entered
+     * @param writeToFile boolean
+     * @return A boolean value.
      */
     public boolean createRecipientHandle(String input, boolean writeToFile) {
 
@@ -79,9 +81,13 @@ public class InputHandler {
     }
 
     /**
-     * Handles input that is meant to send emails.
+     * It takes a string, splits it into an array, checks if the first element of
+     * the array is a valid
+     * email address, checks if the array has 3 elements, and then calls a mediator
+     * to send an email
      * 
-     * @param input
+     * @param input "email@email.com, subject, body"
+     * @return A boolean value.
      */
     public boolean sendEmailHandle(String input) {
         String[] inputArray = input.split(",", 3);

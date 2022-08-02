@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * The BirthdayHandler class as the name suggests "Handles" things related to
+ * birthdays.
+ */
+
 public class BirthdayHandler implements Runnable {
 
     private HashMap<MonthDay, List<String>> emailAddressesByBirthday = new HashMap<MonthDay, List<String>>();
@@ -16,6 +21,9 @@ public class BirthdayHandler implements Runnable {
         this.mediator = mediator;
     }
 
+    /**
+     * If there are any birthdays today, wish them.
+     */
     public void checkForWishableToday() {
         LocalDate today = LocalDate.now();
 
@@ -23,16 +31,31 @@ public class BirthdayHandler implements Runnable {
 
         if (bdayRecipientList != null) {
             for (MailRecipient mailRecipient : bdayRecipientList) {
-                if (alreadyWished(mailRecipient)) {
-                    continue;
-                }
-                Email email = mediator.createBirthdayEmail(mailRecipient);
-                mediator.sendEmail(email, true);
+                wishForBirthday(mailRecipient);
             }
         }
 
     }
 
+    /**
+     * If the recipient hasn't been wished yet, create a birthday email and send
+     * it.
+     * 
+     * @param mailRecipient The recipient of the email
+     */
+    public void wishForBirthday(MailRecipient mailRecipient) {
+        if (!alreadyWished(mailRecipient)) {
+            Email email = mediator.createBirthdayEmail(mailRecipient);
+            mediator.sendEmail(email, true);
+        }
+    }
+
+    /**
+     * It returns a list of recipients whose birthday is on the given date
+     * 
+     * @param date the date to check for birthdays
+     * @return A list of MailRecipient objects.
+     */
     public List<MailRecipient> getWishable(LocalDate date) {
         MonthDay dateMDay = MonthDay.from(date);
         List<MailRecipient> bdayRecipientList = new ArrayList<MailRecipient>();
@@ -49,6 +72,14 @@ public class BirthdayHandler implements Runnable {
         return bdayRecipientList;
     }
 
+    /**
+     * If the birthday is already in the HashMap, add the email to the list of
+     * emails for that birthday.
+     * Otherwise, create a new list with the email and add it to the HashMap
+     * 
+     * @param birthday    LocalDate
+     * @param emailString "test@test.com"
+     */
     public void addToBdayTable(LocalDate birthday, String emailString) {
         MonthDay bdayMonthDay = MonthDay.from(birthday);
 
@@ -62,10 +93,18 @@ public class BirthdayHandler implements Runnable {
 
     }
 
+    /**
+     * If the recipient has already received a birthday email, then return true,
+     * else return false.
+     * 
+     * @param mailRecipient The recipient of the email
+     * @return A boolean value.
+     */
     public boolean alreadyWished(MailRecipient mailRecipient) {
         IHasBirthday hasBirthdayRecipient = (IHasBirthday) mailRecipient;
         List<Email> sentEmails = mediator.getSentEmailsOnDate(LocalDate.now());
         if (sentEmails != null) {
+            // It's checking if the recipient has already received a birthday email.
             for (Email email : sentEmails) {
                 boolean birthdayRecipientGotAMail = email.getRecipientEmailAddress() == mailRecipient.getEmail();
                 boolean isBirthdayEmail = email.getSubject().equals(hasBirthdayRecipient.wishForBdaySubject());

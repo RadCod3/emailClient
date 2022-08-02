@@ -6,6 +6,9 @@ import java.time.LocalDateTime;
 
 import javax.mail.internet.InternetAddress;
 
+/**
+ * This class represents an email that can be sent to a recipient
+ */
 public class Email implements Serializable {
     private transient MailRecipient recipient = null;
     private InternetAddress recipientEmailAddress;

@@ -43,11 +43,9 @@ public class EmailFactory {
     }
 
     /**
-     * "If the mailRecipient is an instance of IHasBirthday, then create an email
+     * If the mailRecipient is an instance of IHasBirthday, then create an email
      * with the content and
-     * subject of the mailRecipient's birthday wishes."
-     * 
-     * The above function is a good example of the use of the instanceof operator
+     * subject of the mailRecipient's birthday wishes.
      * 
      * @param mailRecipient The recipient of the email.
      * @return Email

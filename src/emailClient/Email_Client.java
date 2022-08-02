@@ -12,7 +12,6 @@ import java.time.format.DateTimeFormatter;
 public class Email_Client {
 
     public static void main(String[] args) {
-        // TODO Write JavaDoc and regular comments
 
         // Mediator that handles communication between different objects
         IMediator mediator = new EmailClientMediator();
@@ -46,7 +45,6 @@ public class Email_Client {
         // Wishing for people who have birthdays today is handled by a separate thread
         // since program takes ages to start otherwise
         Thread bdayThread = new Thread(birthdayHandler);
-        // birthdayHandler.checkForWishableToday();
         bdayThread.start();
 
         Scanner scanner = new Scanner(System.in);
@@ -73,12 +71,8 @@ public class Email_Client {
             scanner.nextLine();
             switch (option) {
                 case 1: {
-                    // input format - Official: nimal,nimal@gmail.com,ceo
-                    // Use a single input to get all the details of a recipient
-                    // code to add a new recipient
-                    // store details in clientList.txt file
-                    // Hint: use methods for reading and writing files
-
+                    // This is the code for the 1st option in the menu. It is used to add a new
+                    // recipient.
                     System.out.println("Enter recipient to be added");
                     System.out.println("Recipients can be added to 3 categories");
                     System.out.println("Official, Official_Friend and Personal");
@@ -97,14 +91,15 @@ public class Email_Client {
                     break;
                 }
                 case 2: {
-                    // input format - email, subject, content
-                    // code to send an email
+                    // This is the code for the 2nd option in the menu. It is used to send an email.
+
                     try {
+                        // Waiting for the thread to finish before continuing.
                         bdayThread.join();
                     } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
+
                     System.out.println("Input email to be added");
                     System.out.println("Format :- email, subject, content");
 
@@ -116,8 +111,8 @@ public class Email_Client {
                     break;
                 }
                 case 3: {
-                    // input format - yyyy/MM/dd (ex: 2018/09/17)
-                    // code to print recipients who have birthdays on the given date
+                    // This is the code for the 3rd option in the menu. It is used to print out the
+                    // recipients who have birthdays on the given date.
                     System.out.println("Input date of birthday");
                     System.out.println("Format :- yyyy/MM/dd (ex: 2018/09/17)");
 
@@ -144,8 +139,8 @@ public class Email_Client {
                     break;
                 }
                 case 4: {
-                    // input format - yyyy/MM/dd (ex: 2018/09/17)
-                    // code to print the details of all the emails sent on the input date
+                    // This is the code for the 4th option in the menu. It is used to print out the
+                    // details of all the emails sent on the given date.
                     System.out.println("Input date to list emails");
                     System.out.println("Format :- yyyy/MM/dd (ex: 2018/09/17)");
                     String input = scanner.nextLine();
@@ -156,6 +151,10 @@ public class Email_Client {
                     break;
                 }
                 case 5: {
+                    // This is the code for the 5th option in the menu. It prints out the number of
+                    // total recipients in the client. Also prints out the number of each type of
+                    // recipient.
+
                     int[] counts = RecipientFactory.getRecipientCount();
                     System.out.println(
                             "You currently have " + counts[0]
@@ -165,6 +164,9 @@ public class Email_Client {
                     break;
                 }
                 case 0:
+                    // This is the code for the 0th option in the menu. It is used to exit the
+                    // program.
+
                     System.out.println("Exiting email.... client have a nice day! ");
                     exitProgram = true;
                     break;
@@ -179,13 +181,6 @@ public class Email_Client {
         }
         scanner.close();
 
-        // start email client
-        // code to create objects for each recipient in clientList.txt
-        // use necessary variables, methods and classes
-
     }
 
 }
-
-// create more classes needed for the implementation (remove the public access
-// modifier from classes when you submit your code)

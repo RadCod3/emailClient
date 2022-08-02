@@ -7,6 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * The FileHandler class as the name suggests "Handles" things related to Files.
+ */
 public class FileHandler {
 
     private IMediator mediator;
@@ -36,7 +39,7 @@ public class FileHandler {
     }
 
     /**
-     * It writes recipient input to the recipients file
+     * It writes new recipient input to the recipients file
      * 
      * @param type      String
      * @param arguments String[]

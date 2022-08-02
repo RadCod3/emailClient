@@ -6,6 +6,10 @@ import java.util.List;
 
 import javax.mail.internet.InternetAddress;
 
+/**
+ * It's a class that contains all the other classes and passes the messages
+ * between them
+ */
 public class EmailClientMediator implements IMediator {
 
 	private RecipientFactory recipientFactory;
