@@ -2,6 +2,10 @@ package emailClient;
 
 import javax.mail.internet.InternetAddress;
 
+/**
+ * OfficialRecipient is a subclass of MailRecipient that adds a designation
+ * field
+ */
 public class OfficialRecipient extends MailRecipient {
     private String designation;
     private static int count = 0;

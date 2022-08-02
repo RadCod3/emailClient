@@ -5,6 +5,10 @@ import java.time.Period;
 
 import javax.mail.internet.InternetAddress;
 
+/**
+ * A PersonalRecipient is a MailRecipient that has a nickname and a birthday. It
+ * represents a friend
+ */
 public class PersonalRecipient extends MailRecipient implements IHasBirthday {
 
     private String nickName;

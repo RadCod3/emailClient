@@ -15,6 +15,10 @@ public class FileHandler {
         this.mediator = mediator;
     }
 
+    /**
+     * This function reads a file and creates a recipient object for each line in
+     * the file
+     */
     public void readRecipientsFile() {
         File recipientFile = new File("data/recipient.txt");
         if (recipientFile.exists()) {
@@ -31,6 +35,12 @@ public class FileHandler {
         }
     }
 
+    /**
+     * It writes recipient input to the recipients file
+     * 
+     * @param type      String
+     * @param arguments String[]
+     */
     public void writeToRecipientFile(String type, String[] arguments) {
         try {
             File recipientFile = new File("data/recipient.txt");

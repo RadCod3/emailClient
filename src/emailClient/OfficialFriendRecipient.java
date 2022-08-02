@@ -5,6 +5,9 @@ import java.time.Period;
 
 import javax.mail.internet.InternetAddress;
 
+/**
+ * It's a class that represents a friend who is also an official recipient
+ */
 public class OfficialFriendRecipient extends OfficialRecipient implements IHasBirthday {
 
     private LocalDate birthday;

@@ -11,6 +11,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * It sends emails
+ */
 public class EmailSender {
 
     private IMediator mediator;
@@ -26,6 +29,12 @@ public class EmailSender {
         this.mediator = mediator;
     }
 
+    /**
+     * It sends an email
+     * 
+     * @param email      Email object
+     * @param silentSend boolean
+     */
     public void sendEmail(Email email, boolean silentSend) {
 
         InternetAddress[] recipientAddress = { email.getRecipientEmailAddress() };
@@ -77,6 +86,11 @@ public class EmailSender {
         }
     }
 
+    /**
+     * This function prints the details of all the emails sent on a particular date
+     * 
+     * @param date The date to search for sent emails
+     */
     public void printSentEmailDetails(LocalDate date) {
         List<Email> sentEmails = getSentEmailsOnDate(date);
         if (sentEmails != null) {
@@ -99,6 +113,13 @@ public class EmailSender {
         }
     }
 
+    /**
+     * If the emailsByDate HashMap contains the date, return the list of emails for
+     * that date. Otherwise, return null
+     * 
+     * @param date The date to search for emails
+     * @return A list of emails sent on a given date.
+     */
     public List<Email> getSentEmailsOnDate(LocalDate date) {
         if (emailsByDate.containsKey(date)) {
             return emailsByDate.get(date);

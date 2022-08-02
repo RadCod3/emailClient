@@ -6,6 +6,9 @@ import java.util.HashMap;
 
 import javax.mail.internet.InternetAddress;
 
+/**
+ * It's a factory that creates recipients and stores them in a hashmap
+ */
 public class RecipientFactory {
     // HashMaps that store recipients by email and stores emails by birthdays
     private HashMap<String, MailRecipient> recipientsByEmail = new HashMap<String, MailRecipient>();
@@ -16,6 +19,14 @@ public class RecipientFactory {
         this.mediator = mediator;
     }
 
+    /**
+     * It creates a new mail recipient based on the type of recipient and the
+     * arguments passed to it
+     * 
+     * @param type      String
+     * @param arguments [name, email, designation, etc.]
+     * @return A boolean value.
+     */
     public boolean createMailRecipient(String type, String[] arguments) {
 
         String name = arguments[0];
@@ -78,16 +89,36 @@ public class RecipientFactory {
         return true;
     }
 
+    /**
+     * It returns an array of integers, each of which is the number of recipients of
+     * a certain type
+     * 
+     * @return The number of recipients of each type.
+     */
     public static int[] getRecipientCount() {
         int[] counts = { MailRecipient.getCount(), OfficialRecipient.getCount(), OfficialFriendRecipient.getCount(),
                 PersonalRecipient.getCount() };
         return counts;
     }
 
+    /**
+     * If the emailString is a key in the recipientsByEmail HashMap, return the
+     * value associated with that
+     * key. Otherwise, return null
+     * 
+     * @param emailString the email address of the recipient
+     * @return The value of the key emailString in the recipientsByEmail HashMap.
+     */
     public MailRecipient getRecipientByEmail(String emailString) {
         return hasRecipient(emailString) ? recipientsByEmail.get(emailString) : null;
     }
 
+    /**
+     * This function checks if the recipient exists in the recipientsByEmail HashMap
+     * 
+     * @param emailString The email address of the recipient to check for.
+     * @return A boolean value.
+     */
     public boolean hasRecipient(String emailString) {
         return recipientsByEmail.containsKey(emailString);
     }

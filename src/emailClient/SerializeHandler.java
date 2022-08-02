@@ -18,6 +18,9 @@ public class SerializeHandler {
         this.mediator = mediator;
     }
 
+    /**
+     * It takes the emailsByDate HashMap and serializes it to a file.
+     */
     public void serializeEmails() {
         try {
             FileOutputStream serializedFile = new FileOutputStream("data/emailsByDate.ser");
@@ -33,6 +36,11 @@ public class SerializeHandler {
         }
     }
 
+    /**
+     * It reads a serialized HashMap from a file, updates the recipient of each
+     * email in the HashMap,
+     * and then sets the HashMap as the value of a field in the EmailFactory
+     */
     public void deserializeEmails() {
         try {
             FileInputStream serializedFile = new FileInputStream("data/emailsByDate.ser");
@@ -59,6 +67,12 @@ public class SerializeHandler {
         }
     }
 
+    /**
+     * This function takes a list of emails and if the email's recipient
+     * emailAddress has a recipient saved, updates it
+     *
+     * @param emailList List of Email objects
+     */
     public void updateRecipientOfEmails(List<Email> emailList) {
         for (Email email : emailList) {
             String emailString = email.getRecipientEmailAddress().toString();
