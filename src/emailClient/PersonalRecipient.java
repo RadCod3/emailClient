@@ -24,7 +24,8 @@ public class PersonalRecipient extends MailRecipient implements IHasBirthday {
 
     @Override
     public String wishForBirthdayContent() {
-        return String.format("Hugs and love for your birthday %s", nickName);
+        String content = "Hugs and love for your birthday\n♪o<( ´∀｀)っ┌iii┐";
+        return content;
     }
 
     public String getNickName() {
@@ -38,7 +39,7 @@ public class PersonalRecipient extends MailRecipient implements IHasBirthday {
 
     @Override
     public String wishForBdaySubject() {
-        return String.format("Happy Birthday %s!!!", this.getNickName());
+        return String.format("Happy Birthday %s", nickName);
     }
 
     public static int getCount() {
