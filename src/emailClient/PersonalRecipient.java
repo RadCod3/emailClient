@@ -24,7 +24,7 @@ public class PersonalRecipient extends MailRecipient implements IHasBirthday {
 
     @Override
     public String wishForBirthdayContent() {
-        String content = "Hugs and love for your birthday\n♪o<( ´∀｀)っ┌iii┐";
+        String content = "Hugs and love for your birthday\n(>^_^)><(^o^<)";
         return content;
     }
 
