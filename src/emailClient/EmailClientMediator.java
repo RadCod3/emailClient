@@ -91,8 +91,8 @@ public class EmailClientMediator implements IMediator {
 	}
 
 	@Override
-	public void sendEmail(Email email, boolean silentSend) {
-		emailSender.sendEmail(email, silentSend);
+	public boolean sendEmail(Email email, boolean silentSend) {
+		return emailSender.sendEmail(email, silentSend);
 	}
 
 	@Override

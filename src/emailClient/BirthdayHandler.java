@@ -24,17 +24,20 @@ public class BirthdayHandler implements Runnable {
     /**
      * If there are any birthdays today, wish them.
      */
-    public void checkForWishableToday() {
+    public boolean wishIfWishableRecipients() {
         LocalDate today = LocalDate.now();
 
         List<MailRecipient> bdayRecipientList = getWishable(today);
 
+        boolean wishedSomeone = false;
+
         if (bdayRecipientList != null) {
             for (MailRecipient mailRecipient : bdayRecipientList) {
-                wishForBirthday(mailRecipient);
+                wishedSomeone |= wishForBirthday(mailRecipient);
             }
         }
 
+        return wishedSomeone;
     }
 
     /**
@@ -43,11 +46,12 @@ public class BirthdayHandler implements Runnable {
      * 
      * @param mailRecipient The recipient of the email
      */
-    public void wishForBirthday(MailRecipient mailRecipient) {
+    public boolean wishForBirthday(MailRecipient mailRecipient) {
         if (!alreadyWished(mailRecipient)) {
             Email email = mediator.createBirthdayEmail(mailRecipient);
-            mediator.sendEmail(email, true);
+            return mediator.sendEmail(email, true);
         }
+        return false;
     }
 
     /**
@@ -119,7 +123,10 @@ public class BirthdayHandler implements Runnable {
 
     @Override
     public void run() {
-        checkForWishableToday();
+        boolean wishedSomeone = wishIfWishableRecipients();
+        if (wishedSomeone) {
+            mediator.serializeEmails();
+        }
 
     }
 }

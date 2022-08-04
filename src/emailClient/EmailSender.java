@@ -36,7 +36,7 @@ public class EmailSender {
      * @param email      Email object
      * @param silentSend boolean
      */
-    public void sendEmail(Email email, boolean silentSend) {
+    public boolean sendEmail(Email email, boolean silentSend) {
 
         InternetAddress[] recipientAddress = { email.getRecipientEmailAddress() };
 
@@ -72,6 +72,13 @@ public class EmailSender {
                 System.out.println("Email Sent!");
             }
 
+            // Checking if the HashMap contains the current date as a key. If it does, it
+            // adds the
+            // email to the list of emails for that date. If it doesn't, it creates a new
+            // list of
+            // emails and adds the email to that list. Then it adds the date and the list of
+            // emails to
+            // the HashMap.
             if (emailsByDate.containsKey(LocalDate.now())) {
                 emailsByDate.get(LocalDate.now()).add(email);
             } else {
@@ -79,12 +86,12 @@ public class EmailSender {
                 emailList.add(email);
                 emailsByDate.put(LocalDate.now(), emailList);
             }
-            // TODO Move serialize Emails to inputhandler or EmailClient that way we can
-            // serialize only after all birthday emails are sent
-            mediator.serializeEmails();
+
+            return true;
 
         } catch (MessagingException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

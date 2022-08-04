@@ -38,7 +38,7 @@ public interface IMediator {
 
     public void setSerializeHandler(SerializeHandler serializeHandler);
 
-    public void sendEmail(Email email, boolean silentSend);
+    public boolean sendEmail(Email email, boolean silentSend);
 
     public Email createEmail(MailRecipient mailRecipient, String subject, String content);
 
