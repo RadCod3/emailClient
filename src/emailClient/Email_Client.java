@@ -18,7 +18,7 @@ public class Email_Client {
 
         // Initializing all the factories and handlers etc.
         EmailFactory emailFactory = new EmailFactory();
-        EmailSender emailSender = new EmailSender(mediator);
+        EmailSender emailSender = new EmailSender();
 
         RecipientFactory recipientFactory = new RecipientFactory(mediator);
 
@@ -48,6 +48,7 @@ public class Email_Client {
         bdayThread.start();
 
         Scanner scanner = new Scanner(System.in);
+        // TODO add set signature option
         String menu = "Enter option type: \n"
                 + "1 - Add new recipient\n"
                 + "2 - Send email\n"
@@ -58,7 +59,6 @@ public class Email_Client {
 
         boolean exitProgram = false;
         System.out.println(menu);
-
         while (!exitProgram) {
 
             int option;
