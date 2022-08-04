@@ -36,8 +36,13 @@ public class InputHandler {
         // regex pattern check to match the 3 types of recipients
         Pattern validTypeCheck = Pattern.compile("(?:^|\\W)(?:official|office_friend|personal)(?:$|\\W)");
         Matcher matcher = validTypeCheck.matcher(type);
-        if (!matcher.find() || inputArray.length != 2) {
+        if (!matcher.find()) {
+            System.out.println("Invalid category");
             return false;
+        } else if (inputArray.length != 2) {
+            System.out.println("Valid category but no arguments");
+            return false;
+
         } else {
             String[] arguments = inputArray[1].split("\\s*,\\s*");
 
@@ -65,7 +70,7 @@ public class InputHandler {
                 System.out.println("ex: Personal: sunil, suniya, sunil@gmail.com, 2000/10/10");
                 return false;
             }
-
+            arguments[0] = arguments[0].replaceAll(" +", " ");
             boolean createdRecipient = mediator.createMailRecipient(type, arguments);
 
             // Checking whether the recipient was created or not.

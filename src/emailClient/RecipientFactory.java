@@ -29,7 +29,7 @@ public class RecipientFactory {
      */
     public boolean createMailRecipient(String type, String[] arguments) {
 
-        String name = arguments[0].replaceAll(" +", " ");
+        String name = arguments[0];
         String emailString;
         // TODO Date format decider. Could try to match multiple formats later
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
