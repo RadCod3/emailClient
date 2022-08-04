@@ -112,8 +112,14 @@ public class InputHandler {
         } else {
             email = mediator.createEmail(emailAddress, inputArray[1].trim(), inputArray[2].trim());
         }
-        mediator.sendEmail(email, false);
-        return true;
+        boolean sentEmail = mediator.sendEmail(email, false);
+
+        // If email was successfully sent serialize the emails.
+        if (sentEmail) {
+            mediator.serializeEmails();
+            return true;
+        }
+        return false;
 
     }
 
