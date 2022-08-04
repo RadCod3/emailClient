@@ -167,7 +167,7 @@ public class Email_Client {
                     // This is the code for the 0th option in the menu. It is used to exit the
                     // program.
 
-                    System.out.println("Exiting email.... client have a nice day! ");
+                    System.out.println("Exiting Email Client.... have a nice day! ");
                     exitProgram = true;
                     break;
 
@@ -176,8 +176,10 @@ public class Email_Client {
                     System.out.println(menu);
 
             }
-            System.out.println("==============================================================");
-            System.out.println("Select an Option");
+            if (!exitProgram) {
+                System.out.println("==============================================================");
+                System.out.println("Select an Option");
+            }
         }
         scanner.close();
 
