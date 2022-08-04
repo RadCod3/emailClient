@@ -7,6 +7,8 @@ import javax.mail.internet.InternetAddress;
  */
 public class EmailFactory {
 
+    private String signature = "Thank You\nRegards,\nClarisse";
+
     /**
      * This function creates an email object and sets the recipient, subject and
      * content
@@ -20,7 +22,7 @@ public class EmailFactory {
         Email email = new Email();
         email.setRecipient(mailRecipient);
         email.setSubject(subject);
-        email.setContent(content);
+        email.setContent(content + signature);
         return email;
     }
 
@@ -55,11 +57,17 @@ public class EmailFactory {
             IHasBirthday birthdayRecipient = (IHasBirthday) mailRecipient;
             Email email = new Email();
             email.setRecipient(mailRecipient);
-            email.setContent(birthdayRecipient.wishForBirthdayContent());
+            email.setContent("Dear " + mailRecipient.getName().split(" ")[0] + ",\n" +
+                    birthdayRecipient.wishForBirthdayContent() + "\n\n" +
+                    signature);
             email.setSubject(birthdayRecipient.wishForBdaySubject());
             return email;
         } else {
             return null;
         }
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
     }
 }
