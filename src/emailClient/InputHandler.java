@@ -21,8 +21,8 @@ public class InputHandler {
 
     /**
      * It takes a string input, checks whether it's a valid input, and if it is, it
-     * creates a recipient
-     * object and optionally, calls a {@link FileHandler} to write it to a file
+     * creates a recipient object and optionally, calls a {@link FileHandler} to
+     * write it to a file
      * 
      * @param input       The input string that the user has entered
      * @param writeToFile boolean
@@ -68,6 +68,7 @@ public class InputHandler {
 
             boolean createdRecipient = mediator.createMailRecipient(type, arguments);
 
+            // Checking whether the recipient was created or not.
             if (!createdRecipient) {
                 System.out.println("Invalid input!");
                 return false;

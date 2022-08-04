@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.mail.internet.InternetAddress;
 
+// The interface for the Mediator class.
 public interface IMediator {
     public boolean createRecipientHandle(String input, boolean writeToFile);
 
