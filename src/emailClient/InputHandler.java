@@ -9,7 +9,8 @@ import javax.mail.internet.InternetAddress;
 
 /**
  * A class that "handles" input. This includes validating and calling the next
- * procedure of the program
+ * procedure of the program. This acts as a sort of "Facade" that the
+ * Email_Client can use in a simple manner.
  */
 public class InputHandler {
 
@@ -70,6 +71,7 @@ public class InputHandler {
                 System.out.println("ex: Personal: sunil, suniya, sunil@gmail.com, 2000/10/10");
                 return false;
             }
+            // Replacing multiple spaces with a single space.
             arguments[0] = arguments[0].replaceAll(" +", " ");
             boolean createdRecipient = mediator.createMailRecipient(type, arguments);
 
