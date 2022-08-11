@@ -48,7 +48,6 @@ public class Email_Client {
         bdayThread.start();
 
         Scanner scanner = new Scanner(System.in);
-        // TODO add set signature option
         String menu = "Enter option type: \n"
                 + "1 - Add new recipient\n"
                 + "2 - Send email\n"
