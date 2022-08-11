@@ -89,4 +89,60 @@ public class FileHandler {
 
         }
     }
+
+    /**
+     * It reads a file and sets the signature to the mediator
+     */
+    public void readSignatureFile() {
+        File signatureFile = new File("data/signature.txt");
+        Scanner fileReader = null;
+        if (signatureFile.exists()) {
+            try {
+                fileReader = new Scanner(signatureFile);
+                String signature = "";
+                while (fileReader.hasNextLine()) {
+                    signature += fileReader.nextLine();
+                }
+                mediator.setSignature(signature);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } finally {
+                if (fileReader != null) {
+                    try {
+                        fileReader.close();
+                    } catch (Exception ignoreMe) {
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * It writes the signature to the signature file
+     * 
+     * @param signature String
+     */
+    public void writeToSignatureFile(String signature) {
+        FileWriter fileWriter = null;
+        try {
+            File signatureFile = new File("data/signature.txt");
+            fileWriter = new FileWriter(signatureFile, false);
+            if (!signatureFile.exists()) {
+                signatureFile.createNewFile();
+            }
+            fileWriter.write(signature);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fileWriter != null) {
+                    fileWriter.close();
+                }
+                fileWriter = null;
+
+            } catch (Exception ignoreMe) {
+            }
+
+        }
+    }
 }
