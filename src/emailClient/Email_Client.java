@@ -55,6 +55,7 @@ public class Email_Client {
                 + "3 - Print out all the recipients who have birthdays on a particular date\n"
                 + "4 - Print out details of all the emails sent on a particular date\n"
                 + "5 - Print out the number of recipients\n"
+                + "6 - Set a signature for emails\n"
                 + "0 - Exit Program";
 
         boolean exitProgram = false;
@@ -102,6 +103,7 @@ public class Email_Client {
 
                     System.out.println("Input email to be added");
                     System.out.println("Format :- email, subject, content");
+                    System.out.println("Type \"\\n\" to add a new line in content");
 
                     String input = scanner.nextLine().trim();
                     boolean noError = inputHandler.sendEmailHandle(input);
@@ -163,6 +165,17 @@ public class Email_Client {
                             + " Official Friend and " + counts[3] + " Personal recipients.");
                     break;
                 }
+
+                case 6: {
+                    // This is the code for the 6th option in the menu. It is used to set a
+                    // signature
+                    System.out.println("Current signature is,\n" + emailFactory.getSignature());
+                    System.out.println("type \"\\n\" to add a newline");
+                    String newSignature = scanner.nextLine();
+                    emailFactory.setSignature(newSignature);
+                    break;
+                }
+
                 case 0:
                     // This is the code for the 0th option in the menu. It is used to exit the
                     // program.
