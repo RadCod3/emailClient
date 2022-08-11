@@ -131,4 +131,14 @@ public class EmailClientMediator implements IMediator {
 		return emailSender.getSentEmailsOnDate(date);
 	}
 
+	@Override
+	public void setSignature(String signature) {
+		emailFactory.setSignature(signature);
+	}
+
+	@Override
+	public void writeToSignatureFile(String signature) {
+		fileHandler.writeToSignatureFile(signature);
+	}
+
 }

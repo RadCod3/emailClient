@@ -53,4 +53,8 @@ public interface IMediator {
     public void serializeEmails();
 
     public List<Email> getSentEmailsOnDate(LocalDate date);
+
+    public void setSignature(String signature);
+
+    public void writeToSignatureFile(String signature);
 }
