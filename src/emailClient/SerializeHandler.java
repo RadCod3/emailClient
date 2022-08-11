@@ -46,15 +46,14 @@ public class SerializeHandler {
      * and then sets the HashMap as the value of a field in the EmailFactory
      */
     public void deserializeEmails() {
+        FileInputStream serializedFile = null;
+        ObjectInputStream oStream = null;
         try {
-            FileInputStream serializedFile = new FileInputStream("data/emailsByDate.ser");
-            ObjectInputStream in = new ObjectInputStream(serializedFile);
+            serializedFile = new FileInputStream("data/emailsByDate.ser");
+            oStream = new ObjectInputStream(serializedFile);
 
             @SuppressWarnings("unchecked")
-            HashMap<LocalDate, List<Email>> emailsByDate = (HashMap<LocalDate, List<Email>>) in.readObject();
-
-            in.close();
-            serializedFile.close();
+            HashMap<LocalDate, List<Email>> emailsByDate = (HashMap<LocalDate, List<Email>>) oStream.readObject();
 
             Set<LocalDate> setOfKeys = emailsByDate.keySet();
 
@@ -68,6 +67,19 @@ public class SerializeHandler {
             return;
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
+        } finally {
+            // Closing the streams and setting them to null.
+            try {
+                if (oStream != null) {
+                    oStream.close();
+                }
+                oStream = null;
+                if (serializedFile != null) {
+                    serializedFile.close();
+                }
+                serializedFile = null;
+            } catch (Exception ignoreMe) {
+            }
         }
     }
 

@@ -24,16 +24,23 @@ public class FileHandler {
      */
     public void readRecipientsFile() {
         File recipientFile = new File("data/recipient.txt");
+        Scanner fileReader = null;
         if (recipientFile.exists()) {
             try {
-                Scanner fileReader = new Scanner(recipientFile);
+                fileReader = new Scanner(recipientFile);
                 while (fileReader.hasNextLine()) {
                     String input = fileReader.nextLine();
                     mediator.createRecipientHandle(input, false);
                 }
-                fileReader.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+            } finally {
+                if (fileReader != null) {
+                    try {
+                        fileReader.close();
+                    } catch (Exception ignoreMe) {
+                    }
+                }
             }
         }
     }
@@ -45,26 +52,41 @@ public class FileHandler {
      * @param arguments String[]
      */
     public void writeToRecipientFile(String type, String[] arguments) {
+        FileWriter fileWriter = null;
+        BufferedWriter writer = null;
         try {
             File recipientFile = new File("data/recipient.txt");
-            FileWriter fileWriter = new FileWriter(recipientFile, true);
-            BufferedWriter Writer = new BufferedWriter(fileWriter);
+            fileWriter = new FileWriter(recipientFile, true);
+            writer = new BufferedWriter(fileWriter);
             if (!recipientFile.exists()) {
                 recipientFile.createNewFile();
             }
 
-            Writer.write(type + ':');
+            writer.write(type + ':');
             for (int i = 0; i < arguments.length; i++) {
                 if (!(i == arguments.length - 1)) {
-                    Writer.write(arguments[i] + ',');
+                    writer.write(arguments[i] + ',');
                 } else {
-                    Writer.write(arguments[i] + '\n');
+                    writer.write(arguments[i] + '\n');
                 }
             }
 
-            Writer.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (writer != null) {
+                    writer.close();
+                }
+                writer = null;
+                if (fileWriter != null) {
+                    fileWriter.close();
+                }
+                fileWriter = null;
+
+            } catch (Exception ignoreMe) {
+            }
+
         }
     }
 }
