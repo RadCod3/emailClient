@@ -39,6 +39,7 @@ public class Email_Client {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 
         fileHandler.readRecipientsFile();
+        fileHandler.readSignatureFile();
 
         serializeHandler.deserializeEmails();
 
@@ -172,6 +173,7 @@ public class Email_Client {
                     System.out.println("type \"\\n\" to add a newline");
                     String newSignature = scanner.nextLine();
                     emailFactory.setSignature(newSignature);
+                    fileHandler.writeToSignatureFile(newSignature);
                     break;
                 }
 
