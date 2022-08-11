@@ -40,7 +40,7 @@ public class EmailFactory {
         Email email = new Email();
         email.setRecipientEmailAddress(emailAddress);
         email.setSubject(subject);
-        email.setContent(content);
+        email.setContent(content + "\n\n" + signature);
         return email;
     }
 
