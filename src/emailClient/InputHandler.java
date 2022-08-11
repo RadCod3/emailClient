@@ -114,10 +114,13 @@ public class InputHandler {
 
         MailRecipient recipient = mediator.getRecipientByEmail(inputArray[0]);
         Email email;
+        String subject = inputArray[1].trim();
+        String content = inputArray[2].trim().replaceAll("\\\\n", "\n");
+
         if (recipient != null) {
-            email = mediator.createEmail(recipient, inputArray[1].trim(), inputArray[2].trim());
+            email = mediator.createEmail(recipient, subject, content);
         } else {
-            email = mediator.createEmail(emailAddress, inputArray[1].trim(), inputArray[2].trim());
+            email = mediator.createEmail(emailAddress, subject, content);
         }
         boolean sentEmail = mediator.sendEmail(email, false);
 

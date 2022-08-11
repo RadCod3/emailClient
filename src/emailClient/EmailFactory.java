@@ -7,7 +7,7 @@ import javax.mail.internet.InternetAddress;
  */
 public class EmailFactory {
 
-    private String signature = "Thank You\nRegards,\nClarisse";
+    private String signature = "";
 
     /**
      * This function creates an email object and sets the recipient, subject and
@@ -68,6 +68,11 @@ public class EmailFactory {
     }
 
     public void setSignature(String signature) {
-        this.signature = signature;
+        this.signature = signature.replaceAll("\\\\n", "\n");
     }
+
+    public String getSignature() {
+        return signature;
+    }
+
 }
