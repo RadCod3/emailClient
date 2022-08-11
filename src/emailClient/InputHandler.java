@@ -2,9 +2,11 @@ package emailClient;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
 /**
@@ -145,7 +147,7 @@ public class InputHandler {
         try {
             LocalDate parsedDate = LocalDate.parse(date, formatter);
             return parsedDate;
-        } catch (Exception e) {
+        } catch (DateTimeParseException e) {
             System.err.println("Invalid Date");
             return null;
         }
@@ -183,7 +185,7 @@ public class InputHandler {
             emailAddress.validate();
             return emailAddress;
 
-        } catch (Exception e) {
+        } catch (AddressException e) {
             System.err.println("Invalid Email");
             return null;
         }
