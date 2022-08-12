@@ -95,7 +95,12 @@ public class RecipientFactory {
      * @return The number of recipients of each type.
      */
     public static int[] getRecipientCount() {
-        int[] counts = { MailRecipient.getCount(), OfficialRecipient.getCount(), OfficialFriendRecipient.getCount(),
+        int[] counts = { MailRecipient.getCount(),
+                // Here we subtract because the OfficialFriendRecipient class is a subclass of
+                // OfficialRecipient so its instances are counted as OfficialRecipient instances
+                // as well
+                OfficialRecipient.getCount() - OfficialFriendRecipient.getCount(),
+                OfficialFriendRecipient.getCount(),
                 PersonalRecipient.getCount() };
         return counts;
     }
