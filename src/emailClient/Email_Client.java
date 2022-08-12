@@ -66,6 +66,7 @@ public class Email_Client {
             try {
                 option = scanner.nextInt();
             } catch (InputMismatchException e) {
+                // just an undefined case so that it goes to default option
                 option = 99;
             }
 
@@ -94,11 +95,14 @@ public class Email_Client {
                 case 2: {
                     // This is the code for the 2nd option in the menu. It is used to send an email.
 
-                    try {
-                        // Waiting for the thread to finish before continuing.
-                        bdayThread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    if (bdayThread.isAlive()) {
+                        System.out.println("Waiting for birthday emails to be sent...");
+                        try {
+                            bdayThread.join();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println("Done!");
                     }
 
                     System.out.println("Input email to be added");
@@ -180,7 +184,15 @@ public class Email_Client {
                 case 0:
                     // This is the code for the 0th option in the menu. It is used to exit the
                     // program.
-
+                    if (bdayThread.isAlive()) {
+                        System.out.println("Waiting for birthday emails to be sent...");
+                        try {
+                            bdayThread.join();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println("Done!");
+                    }
                     System.out.println("Exiting Email Client.... have a nice day! ");
                     exitProgram = true;
                     break;
