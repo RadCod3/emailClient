@@ -31,7 +31,6 @@ public class RecipientFactory {
 
         String name = arguments[0];
         String emailString;
-        // TODO Date format decider. Could try to match multiple formats later
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         String designation = null;
         String nickName = null;

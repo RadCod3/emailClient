@@ -20,8 +20,6 @@ public class EmailSender {
     private final String username = "radith.testing@gmail.com";
     private final String password = "fuzaqbzrckcqnlxf";
 
-    // TODO Save emails despite them not getting sent
-    // But that requires serializing twice does it lets see
     private HashMap<LocalDate, List<Email>> emailsByDate = new HashMap<LocalDate, List<Email>>();
 
     /**
