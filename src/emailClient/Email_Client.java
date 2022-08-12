@@ -105,7 +105,7 @@ public class Email_Client {
                         System.out.println("Done!");
                     }
 
-                    System.out.println("Input email to be added");
+                    System.out.println("Input email to be sent");
                     System.out.println("Format :- email, subject, content");
                     System.out.println("Type \"\\n\" to add a new line in content");
 
