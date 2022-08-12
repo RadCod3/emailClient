@@ -110,8 +110,14 @@ public class BirthdayHandler implements Runnable {
         if (sentEmails != null) {
             // It's checking if the recipient has already received a birthday email.
             for (Email email : sentEmails) {
+                // This condition checks if the recipient of the email is the same as the
+                // recipient we are checking.
                 boolean birthdayRecipientGotAMail = email.getRecipientEmailAddress() == mailRecipient.getEmail();
+                // This condition checks if the email is a birthday email with the proper
+                // subject for this recipient.
                 boolean isBirthdayEmail = email.getSubject().equals(hasBirthdayRecipient.wishForBdaySubject());
+                // We check both conditions because there might be two recipients with the same
+                // name which means the generated email subject could be the same.
                 if (birthdayRecipientGotAMail && isBirthdayEmail) {
                     return true;
                 }
