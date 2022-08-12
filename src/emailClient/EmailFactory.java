@@ -22,7 +22,7 @@ public class EmailFactory {
         Email email = new Email();
         email.setRecipient(mailRecipient);
         email.setSubject(subject);
-        email.setContent(content + signature);
+        email.setContent(content + "\n\n" + signature);
         return email;
     }
 
